@@ -42,4 +42,4 @@ Para garantir segurança e escalabilidade comercial, a próxima etapa do desenvo
 
 Para propostas comerciais, aquisição do sistema ou desenvolvimento sob medida, entre em contato:
 * **Email:** santosj.jacinto@gmail.com ; montenegrokleber7@gmail.com
-* **LinkedIn:** [Josué dos santos](https://linkedin.com/in/josuedossantosj) [Kleber Marcelo] (https://linkedin.com/in/kleber-montenegro)
+* **LinkedIn:** [Josué dos santos](https://linkedin.com/in/josuedossantosj)/ [Kleber Marcelo](https://linkedin.com/in/kleber-montenegro)

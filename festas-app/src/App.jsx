@@ -85,10 +85,8 @@ export default function App() {
     </div>
   );
 
-  // Função simulando o envio do formulário de login/cadastro
   const handleAuth = (e) => {
     e.preventDefault();
-    // Como ainda não há backend conectado (Node/Express), simulamos o sucesso do login
     setIsAutenticado(true);
   };
 
@@ -143,7 +141,6 @@ export default function App() {
         {abaAtiva === 'admin' && (
           <div className="animate-[fadeIn_0.4s_ease-out]">
             
-            {/* TELA DE LOGIN / CADASTRO SE NÃO ESTIVER LOGADO */}
             {!isAutenticado ? (
               <div className="max-w-md mx-auto mt-12 bg-gray-900/80 p-8 rounded-2xl border border-gray-800 shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600"></div>
@@ -183,7 +180,6 @@ export default function App() {
               </div>
             ) : (
               
-              /* TELA DE GESTÃO (SÓ APARECE DEPOIS DO LOGIN) */
               <div className="max-w-3xl mx-auto mt-8 relative">
                 <div className="flex justify-between items-center mb-6 px-2">
                   <h2 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-white">Painel de Gestão</h2>
@@ -225,6 +221,16 @@ export default function App() {
                     <div className="space-y-2">
                       <label className="text-sm font-semibold text-gray-400">Contacto</label>
                       <input type="text" className="w-full bg-gray-950 border border-gray-800 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 p-3.5 rounded-lg text-white outline-none transition-all" />
+                    </div>
+                    
+                    {/* NOVO CAMPO: UPLOAD DE IMAGEM */}
+                    <div className="space-y-2 md:col-span-2">
+                      <label className="text-sm font-semibold text-gray-400">Imagem do Item</label>
+                      <input 
+                        type="file" 
+                        accept="image/*"
+                        className="w-full bg-gray-950 border border-gray-800 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 p-2 rounded-lg text-gray-400 outline-none transition-all cursor-pointer file:cursor-pointer file:mr-4 file:py-2.5 file:px-5 file:rounded-lg file:border-0 file:text-sm file:font-bold file:bg-purple-600/20 file:text-purple-400 hover:file:bg-purple-600/30 file:transition-colors" 
+                      />
                     </div>
                   </div>
                   
