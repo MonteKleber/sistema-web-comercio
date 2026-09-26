@@ -1,23 +1,24 @@
 import { useState } from 'react';
 
-// --- MOCK DE DADOS EXPANDIDO COM CATEGORIAS ---
+// --- MOCK DE DADOS COM LINKS TESTADOS E ESTÁVEIS ---
 const mockProdutos = [
-  { id: 1, tipo: 'produto', categoria: 'Combos', nome: 'Combo Vodka + Energético', preco: '150,00', fornecedor: 'Adega Z', contato: '(92) 99999-9999', esgotado: false },
-  { id: 2, tipo: 'produto', categoria: 'Essências', nome: 'Essência Menta 50g', preco: '35,00', fornecedor: 'Tabacaria X', contato: '(92) 98888-8888', esgotado: true },
-  { id: 3, tipo: 'produto', categoria: 'Bebidas', nome: 'Cerveja Lata (Pack 12)', preco: '45,00', fornecedor: 'Distribuidora Y', contato: '(92) 97777-7777', esgotado: false },
-  { id: 6, tipo: 'produto', categoria: 'Bebidas', nome: 'Garrafa Gin Tanqueray', preco: '120,00', fornecedor: 'Adega Z', contato: '(92) 99999-9999', esgotado: false },
-  { id: 7, tipo: 'produto', categoria: 'Essências', nome: 'Essência Love 66', preco: '40,00', fornecedor: 'Tabacaria X', contato: '(92) 98888-8888', esgotado: false },
-  { id: 8, tipo: 'produto', categoria: 'Acessórios', nome: 'Carvão de Coco 1kg', preco: '25,00', fornecedor: 'Tabacaria X', contato: '(92) 98888-8888', esgotado: false },
-  { id: 9, tipo: 'produto', categoria: 'Combos', nome: 'Combo Whisky + Gelo Coco', preco: '200,00', fornecedor: 'Distribuidora Y', contato: '(92) 97777-7777', esgotado: false },
+  { id: 1, tipo: 'produto', categoria: 'Combos', nome: 'Combo Vodka + Energético', preco: '150,00', fornecedor: 'Adega Z', contato: '(92) 99999-9999', esgotado: false, imagem: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&auto=format&fit=crop&q=80' },
+  { id: 2, tipo: 'produto', categoria: 'Essências', nome: 'Essência Menta 50g', preco: '35,00', fornecedor: 'Tabacaria X', contato: '(92) 98888-8888', esgotado: true, imagem: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=600&auto=format&fit=crop&q=80' },
+  { id: 3, tipo: 'produto', categoria: 'Bebidas', nome: 'Cerveja Lata (Pack 12)', preco: '45,00', fornecedor: 'Distribuidora Y', contato: '(92) 97777-7777', esgotado: false, imagem: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=600&auto=format&fit=crop&q=80' },
+  { id: 6, tipo: 'produto', categoria: 'Bebidas', nome: 'Garrafa Gin Tanqueray', preco: '120,00', fornecedor: 'Adega Z', contato: '(92) 99999-9999', esgotado: false, imagem: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600&auto=format&fit=crop&q=80' },
+  { id: 7, tipo: 'produto', categoria: 'Essências', nome: 'Essência Love 66', preco: '40,00', fornecedor: 'Tabacaria X', contato: '(92) 98888-8888', esgotado: false, imagem: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80' },
+  { id: 8, tipo: 'produto', categoria: 'Acessórios', nome: 'Carvão de Coco 1kg', preco: '25,00', fornecedor: 'Tabacaria X', contato: '(92) 98888-8888', esgotado: false, imagem: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&auto=format&fit=crop&q=80' },
+  { id: 9, tipo: 'produto', categoria: 'Combos', nome: 'Combo Whisky + Gelo Coco', preco: '200,00', fornecedor: 'Distribuidora Y', contato: '(92) 97777-7777', esgotado: false, imagem: 'https://images.unsplash.com/photo-1527281400683-1aae777175f8?w=600&auto=format&fit=crop&q=80' },
 ];
 
 const mockServicos = [
-  { id: 4, tipo: 'servico', categoria: 'Música', nome: 'DJ Eletrônica (4h)', preco: '500,00', fornecedor: 'DJ Cleiton', contato: '(92) 91111-1111', esgotado: false },
-  { id: 5, tipo: 'servico', categoria: 'Bar', nome: 'Bartender c/ Bar Móvel', preco: '800,00', fornecedor: 'Drinks&Co', contato: '(92) 92222-2222', esgotado: false },
-  { id: 10, tipo: 'servico', categoria: 'Música', nome: 'Banda Sertaneja (3h)', preco: '1200,00', fornecedor: 'Os Parças', contato: '(92) 93333-3333', esgotado: false },
-  { id: 11, tipo: 'servico', categoria: 'Segurança', nome: 'Equipe de Segurança (4 p/)', preco: '600,00', fornecedor: 'SafeNight', contato: '(92) 94444-4444', esgotado: false },
-  { id: 12, tipo: 'servico', categoria: 'Estrutura', nome: 'Iluminação + Máquina Fumaça', preco: '350,00', fornecedor: 'Luz & Cia', contato: '(92) 95555-5555', esgotado: false },
+  { id: 4, tipo: 'servico', categoria: 'Música', nome: 'DJ Eletrônica (4h)', preco: '500,00', fornecedor: 'DJ Cleiton', contato: '(92) 91111-1111', esgotado: false, imagem: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&auto=format&fit=crop&q=80' },
+  { id: 5, tipo: 'servico', categoria: 'Bar', nome: 'Bartender c/ Bar Móvel', preco: '800,00', fornecedor: 'Drinks&Co', contato: '(92) 92222-2222', esgotado: false, imagem: 'https://images.unsplash.com/photo-1574096079513-d8259312b785?w=600&auto=format&fit=crop&q=80' },
+  { id: 10, tipo: 'servico', categoria: 'Música', nome: 'Banda Sertaneja (3h)', preco: '1200,00', fornecedor: 'Os Parças', contato: '(92) 93333-3333', esgotado: false, imagem: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&auto=format&fit=crop&q=80' },
+  { id: 11, tipo: 'servico', categoria: 'Segurança', nome: 'Equipe de Segurança (4 p/)', preco: '600,00', fornecedor: 'SafeNight', contato: '(92) 94444-4444', esgotado: false, imagem: 'https://images.unsplash.com/photo-1582103287241-2762adba6c36?w=600&auto=format&fit=crop&q=80' },
+  { id: 12, tipo: 'servico', categoria: 'Estrutura', nome: 'Iluminação + Máquina Fumaça', preco: '350,00', fornecedor: 'Luz & Cia', contato: '(92) 95555-5555', esgotado: false, imagem: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&auto=format&fit=crop&q=80' },
 ];
+
 
 export default function App() {
   const [abaAtiva, setAbaAtiva] = useState('produtos');
@@ -28,7 +29,7 @@ export default function App() {
 
   // Estados de Autenticação
   const [isAutenticado, setIsAutenticado] = useState(false);
-  const [modoAuth, setModoAuth] = useState('login'); // 'login' ou 'cadastro'
+  const [modoAuth, setModoAuth] = useState('login'); 
 
   const categoriasProdutos = ['Todos', ...new Set(mockProdutos.map(p => p.categoria))];
   const categoriasServicos = ['Todos', ...new Set(mockServicos.map(s => s.categoria))];
@@ -62,15 +63,33 @@ export default function App() {
           onClick={() => setItemSelecionado(item)}
           className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-5 cursor-pointer transition-all duration-300 border border-gray-700 hover:border-purple-500 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)] relative group flex flex-col"
         >
-          <div className="bg-gray-900 h-48 rounded-lg w-full mb-5 flex flex-col items-center justify-center text-gray-500 border border-gray-800 group-hover:border-purple-500/50 transition-colors relative overflow-hidden">
-            <span className="text-sm tracking-widest uppercase opacity-30 font-bold">{item.categoria}</span>
+          {/* ESTRUTURA DE IMAGEM ATUALIZADA */}
+          <div className="h-48 rounded-lg w-full mb-5 relative overflow-hidden border border-gray-800 group-hover:border-purple-500/50 transition-colors">
+            <img 
+              src={item.imagem} 
+              alt={item.nome} 
+              onError={(e) => {
+           // Se a imagem falhar por qualquer motivo, carrega uma foto coringa de festa no lugar
+              e.target.src = 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&auto=format&fit=crop&q=80';
+             }}
+             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            {/* Degradê escuro sobre a imagem para não perder o contraste */}
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80"></div>
+            
+            {/* Categoria posicionada sobre a imagem */}
+            <span className="absolute bottom-3 left-3 text-xs tracking-widest uppercase text-gray-300 font-bold px-2 py-1 bg-black/50 backdrop-blur-md rounded">
+              {item.categoria}
+            </span>
           </div>
           
           <h3 className="text-xl font-bold text-gray-50 tracking-wide flex-1">{item.nome}</h3>
           <p className="text-purple-400 font-black mt-3 text-lg">R$ {item.preco}</p>
           
           {item.esgotado && (
-            <span className="absolute top-3 right-3 bg-red-600/90 backdrop-blur-md text-white text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
+            <span className="absolute top-3 right-3 bg-red-600/90 backdrop-blur-md text-white text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-lg z-10">
               Esgotado
             </span>
           )}
@@ -223,7 +242,6 @@ export default function App() {
                       <input type="text" className="w-full bg-gray-950 border border-gray-800 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 p-3.5 rounded-lg text-white outline-none transition-all" />
                     </div>
                     
-                    {/* NOVO CAMPO: UPLOAD DE IMAGEM */}
                     <div className="space-y-2 md:col-span-2">
                       <label className="text-sm font-semibold text-gray-400">Imagem do Item</label>
                       <input 
@@ -252,30 +270,37 @@ export default function App() {
         )}
       </main>
 
-      {/* MODAL DE DETALHES */}
+      {/* MODAL DE DETALHES - AGORA COM A IMAGEM NO TOPO */}
       {itemSelecionado && (
         <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-[fadeIn_0.2s_ease-out]">
-          <div className="bg-gray-900 p-8 rounded-2xl max-w-sm w-full border border-purple-500/30 shadow-[0_0_40px_rgba(168,85,247,0.15)] relative">
-            <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full blur-2xl opacity-40"></div>
+          <div className="bg-gray-900 p-8 rounded-2xl max-w-sm w-full border border-purple-500/30 shadow-[0_0_40px_rgba(168,85,247,0.15)] relative overflow-hidden">
             
-            <span className="block text-center text-gray-500 text-xs font-bold uppercase tracking-widest mb-2 relative">{itemSelecionado.categoria}</span>
-            <h3 className="text-2xl font-black mb-1 text-center relative">{itemSelecionado.nome}</h3>
-            <p className="text-purple-400 font-bold text-xl mb-8 text-center relative">R$ {itemSelecionado.preco}</p>
-            
-            <div className="bg-gray-950 p-5 rounded-xl border border-gray-800 mb-8 relative">
-              <p className="text-gray-500 text-xs uppercase tracking-wider font-bold mb-1">Fornecedor Oficial</p>
-              <p className="font-black text-xl text-gray-100 mb-4">{itemSelecionado.fornecedor}</p>
-              
-              <p className="text-gray-500 text-xs uppercase tracking-wider font-bold mb-1">Contacto Direto</p>
-              <p className="font-black text-blue-400 text-xl">{itemSelecionado.contato}</p>
+            {/* Imagem do item no modal */}
+            <div className="absolute top-0 left-0 w-full h-32 bg-gray-800 z-0">
+               <img src={itemSelecionado.imagem} alt={itemSelecionado.nome} className="w-full h-full object-cover opacity-40" />
+               <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
             </div>
 
-            <button 
-              onClick={() => setItemSelecionado(null)}
-              className="w-full bg-gray-800 hover:bg-gray-700 text-white font-bold py-3.5 rounded-lg transition-colors border border-gray-700"
-            >
-              Fechar Detalhes
-            </button>
+            <div className="relative z-10 pt-16">
+              <span className="block text-center text-purple-400 text-xs font-bold uppercase tracking-widest mb-2">{itemSelecionado.categoria}</span>
+              <h3 className="text-2xl font-black mb-1 text-center text-white">{itemSelecionado.nome}</h3>
+              <p className="text-gray-300 font-bold text-xl mb-8 text-center">R$ {itemSelecionado.preco}</p>
+              
+              <div className="bg-gray-950 p-5 rounded-xl border border-gray-800 mb-8">
+                <p className="text-gray-500 text-xs uppercase tracking-wider font-bold mb-1">Fornecedor Oficial</p>
+                <p className="font-black text-xl text-gray-100 mb-4">{itemSelecionado.fornecedor}</p>
+                
+                <p className="text-gray-500 text-xs uppercase tracking-wider font-bold mb-1">Contacto Direto</p>
+                <p className="font-black text-blue-400 text-xl">{itemSelecionado.contato}</p>
+              </div>
+
+              <button 
+                onClick={() => setItemSelecionado(null)}
+                className="w-full bg-gray-800 hover:bg-gray-700 text-white font-bold py-3.5 rounded-lg transition-colors border border-gray-700"
+              >
+                Fechar Detalhes
+              </button>
+            </div>
           </div>
         </div>
       )}
